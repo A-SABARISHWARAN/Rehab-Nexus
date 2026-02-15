@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reach & Grab Training | RehabVerse VR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Inherit main styles -->
+    <link rel="stylesheet" href="reach-grab.css"> <!-- Specific page styles -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖐️</text></svg>">
+</head>
+
+<body>
+    <!-- Navbar (Simplified) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <span class="logo-icon">👁️</span>
+                <span class="logo-text">RehabVerse VR</span>
+            </a>
+            <div class="nav-controls">
+                <a href="index.html#demo" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Back to Demos
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Simulation Section -->
+    <section class="simulation-overview">
+        <div class="container">
+            <div class="simulation-header">
+                <div>
+                    <h1 class="page-title">Reach & Grab Training</h1>
+                    <p class="page-subtitle">Patients reach for virtual objects in 3D space, improving shoulder and
+                        elbow visual guidance.</p>
+                    <div class="badges">
+                        <span class="badge time"><i class="far fa-clock"></i> 10-15 min session</span>
+                        <span class="badge difficulty">Medium Intensity</span>
+                    </div>
+                </div>
+                <div class="status-panel">
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        <span class="status-text" id="statusText">System Ready</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Simulation Viewport -->
+            <div class="viewport-container">
+                <div class="simulation-viewport" id="simViewport">
+                    <!-- Background Elements -->
+                    <div class="rehab-grid"></div>
+
+                    <!-- 3D Front-Facing Human Model -->
+                    <div class="human-model-container" id="humanModel">
+                        <div class="human-body">
+                            <div class="head"></div>
+                            <div class="neck"></div>
+                            <div class="torso"></div>
+                            <div class="pelvis"></div>
+
+                            <!-- Arms (Front View Setup) -->
+                            <div class="arm-group arm-left" id="armLeft">
+                                <div class="shoulder"></div>
+                                <div class="upper-arm"></div>
+                                <div class="elbow"></div>
+                                <div class="forearm"></div>
+                                <div class="hand"></div>
+                            </div>
+
+                            <div class="arm-group arm-right" id="armRight">
+                                <div class="shoulder"></div>
+                                <div class="upper-arm"></div>
+                                <div class="elbow"></div>
+                                <div class="forearm"></div>
+                                <div class="hand"></div>
+                            </div>
+
+                            <!-- Legs (Static Stance) -->
+                            <div class="leg-group leg-left">
+                                <div class="thigh"></div>
+                                <div class="knee"></div>
+                                <div class="calf"></div>
+                                <div class="foot"></div>
+                            </div>
+
+                            <div class="leg-group leg-right">
+                                <div class="thigh"></div>
+                                <div class="knee"></div>
+                                <div class="calf"></div>
+                                <div class="foot"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Target Objects -->
+                    <div class="target-container" id="targetContainer">
+                        <!-- Targets spawned by JS -->
+                    </div>
+
+                    <!-- Visual Guidance Overlay -->
+                    <div class="guidance-overlay" id="guidanceOverlay"></div>
+                </div>
+
+                <!-- Simulation Controls -->
+                <div class="sim-controls">
+                    <div class="control-group">
+                        <label>Difficulty:</label>
+                        <div class="toggle-group">
+                            <button class="btn-toggle active" data-level="easy">Easy</button>
+                            <button class="btn-toggle" data-level="medium">Medium</button>
+                            <button class="btn-toggle" data-level="hard">Hard</button>
+                        </div>
+                    </div>
+                    <div class="control-actions">
+                        <button class="btn-control" id="btnRestart" title="Restart Demo">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <button class="btn-control" id="btnSlowMo" title="Toggle Slow Motion">
+                            <i class="fas fa-tachometer-alt-slow"></i> 🐢
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress Channel -->
+                <div class="progress-panel">
+                    <div class="metric-item">
+                        <span class="metric-label">Repetitions</span>
+                        <span class="metric-value big" id="repCount">0</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Accuracy</span>
+                        <span class="metric-value" id="accuracyVal">100%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">ROM Angle</span>
+                        <div class="rom-viz">
+                            <span class="rom-val" id="romVal">45°</span>
+                            <div class="rom-bar">
+                                <div class="rom-fill" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-detail">
+        <div class="container">
+            <h2 class="section-title">Therapeutic Benefits</h2>
+            <div class="benefits-grid-detail">
+                <div class="benefit-card-detail" style="animation-delay: 0.1s">
+                    <div class="detail-icon"><i class="fas fa-arrows-alt-h"></i></div>
+                    <h3>Range of Motion</h3>
+                    <p>Increases shoulder and elbow flexibility through targeted reach exercises.</p>
+                </div>
+                <div class="benefit-card-detail" style="animation-delay: 0.2s">
+                    <div class="detail-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Motor Coordination</h3>
+                    <p>Refines hand-eye coordination by aligning movement with visual targets.</p>
+                </div>
+                <div class="benefit-card-detail" style="animation-delay: 0.3s">
+                    <div class="detail-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Neuroplasticity</h3>
+                    <p>Stimulates neural pathways via repetitive, goal-oriented motor tasks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <p>&copy; 2026 RehabVerse VR. Clinical Simulation Demo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="reach-grab.js"></script>
+</body>
+
+</html>

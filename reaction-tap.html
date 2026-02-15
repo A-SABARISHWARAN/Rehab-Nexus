@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Tap Training | RehabVerse VR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Inherit main styles -->
+    <link rel="stylesheet" href="reaction-tap.css"> <!-- Specific page styles -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <span class="logo-icon">👁️</span>
+                <span class="logo-text">RehabVerse VR</span>
+            </a>
+            <div class="nav-controls">
+                <a href="index.html#demo" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Back to Demos
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Simulation Section -->
+    <section class="simulation-overview">
+        <div class="container">
+            <div class="simulation-header">
+                <div>
+                    <h1 class="page-title">Reaction Tap Training</h1>
+                    <p class="page-subtitle">Patients respond to visual cues with precise movements, improving
+                        coordination and cognitive-motor integration.</p>
+                    <div class="badges">
+                        <span class="badge time"><i class="far fa-clock"></i> 5-10 min session</span>
+                        <span class="badge difficulty">High Intensity</span>
+                    </div>
+                </div>
+                <div class="game-hud">
+                    <div class="hud-item score-box">
+                        <span class="hud-label">SCORE</span>
+                        <span class="hud-value" id="scoreVal">0</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">COMBO</span>
+                        <span class="hud-value" id="comboVal">x1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Simulation Viewport -->
+            <div class="viewport-container">
+                <div class="simulation-viewport" id="gameViewport">
+                    <div class="rehab-grid"></div>
+
+                    <!-- 3D Front-Facing Human Model (Speed Optimized) -->
+                    <div class="human-model-container">
+                        <div class="human-body">
+                            <div class="head"></div>
+                            <div class="torso"></div>
+
+                            <!-- Static Legs -->
+                            <div class="leg-group leg-left">
+                                <div class="thigh"></div>
+                                <div class="knee"></div>
+                                <div class="calf"></div>
+                                <div class="foot"></div>
+                            </div>
+                            <div class="leg-group leg-right">
+                                <div class="thigh"></div>
+                                <div class="knee"></div>
+                                <div class="calf"></div>
+                                <div class="foot"></div>
+                            </div>
+
+                            <!-- Active Arms -->
+                            <div class="arm-group arm-left" id="armLeft">
+                                <div class="shoulder"></div>
+                                <div class="upper-arm"></div>
+                                <div class="elbow"></div>
+                                <div class="forearm"></div>
+                                <div class="hand"></div>
+                            </div>
+                            <div class="arm-group arm-right" id="armRight">
+                                <div class="shoulder"></div>
+                                <div class="upper-arm"></div>
+                                <div class="elbow"></div>
+                                <div class="forearm"></div>
+                                <div class="hand"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tap Targets Layer -->
+                    <div class="tap-layer" id="tapLayer">
+                        <!-- Targets appear here -->
+                    </div>
+
+                    <!-- Overlay for Start -->
+                    <div class="game-overlay" id="gameOverlay">
+                        <div class="overlay-content">
+                            <i class="fas fa-bolt fa-3x"></i>
+                            <h2>Ready to React?</h2>
+                            <p>Tap targets as fast as you can.</p>
+                            <button class="btn btn-primary" id="btnStartGame">Start Game</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Controls -->
+                <div class="sim-controls">
+                    <div class="control-actions">
+                        <button class="btn-control" id="btnRestart" title="Restart Game">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <button class="btn-control" id="btnSpeed" title="Toggle Speed Mode">
+                            <i class="fas fa-running"></i>
+                        </button>
+                    </div>
+                    <div class="status-msg" id="statusMsg">Waiting to start...</div>
+                </div>
+
+                <!-- Performance Panel -->
+                <div class="performance-panel">
+                    <div class="perf-item">
+                        <span class="perf-label">Avg Reaction</span>
+                        <span class="perf-value" id="avgTime">-- ms</span>
+                    </div>
+                    <div class="perf-item">
+                        <span class="perf-label">Focus Score</span>
+                        <div class="focus-bar">
+                            <div class="focus-fill" id="focusFill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="perf-item">
+                        <span class="perf-label">Grade</span>
+                        <span class="perf-value grade" id="gradeVal">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-detail">
+        <div class="container">
+            <h2 class="section-title">Cognitive Benefits</h2>
+            <div class="benefits-grid-detail">
+                <div class="benefit-card-detail" style="animation-delay: 0.1s">
+                    <div class="detail-icon"><i class="fas fa-stopwatch"></i></div>
+                    <h3>Reaction Speed</h3>
+                    <p>Trains the brain to process visual stimuli and execute motor commands instantly.</p>
+                </div>
+                <div class="benefit-card-detail" style="animation-delay: 0.2s">
+                    <div class="detail-icon"><i class="fas fa-crosshairs"></i></div>
+                    <h3>Precision</h3>
+                    <p>Enhances fine motor skills and accuracy under time pressure.</p>
+                </div>
+                <div class="benefit-card-detail" style="animation-delay: 0.3s">
+                    <div class="detail-icon"><i class="fas fa-puzzle-piece"></i></div>
+                    <h3>Cognitive Load</h3>
+                    <p>Improves ability to maintain focus and attention during physical tasks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <p>&copy; 2026 RehabVerse VR. Clinical Simulation Demo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="reaction-tap.js"></script>
+</body>
+
+</html>

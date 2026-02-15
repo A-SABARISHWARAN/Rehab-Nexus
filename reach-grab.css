@@ -1,0 +1,585 @@
+/* Reach & Grab Specific Styles */
+
+/* ===== LAYOUT & HERO ===== */
+.simulation-overview {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+    background: var(--gradient-hero);
+    min-height: 80vh;
+}
+
+.simulation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.page-subtitle {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+.badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.badge {
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ===== STATUS PANEL ===== */
+.status-panel {
+    background: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-secondary);
+    animation: pulse 2s infinite;
+}
+
+.status-text {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    min-width: 150px;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== VIEWPORT CONTAINER ===== */
+.viewport-container {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.simulation-viewport {
+    height: 500px;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%);
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+/* Background Grid */
+.rehab-grid {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -50%;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: perspective(500px) rotateX(60deg);
+    opacity: 0.6;
+}
+
+/* ===== 3D BLUE HUMAN MODEL (FRONT FACING) ===== */
+:root {
+    --skin-base: #93c5fd;
+    /* Light Blue */
+    --skin-dark: #60a5fa;
+    /* Medium Blue Shadow */
+    --skin-highlight: #bfdbfe;
+    /* Very Light Blue Highlight */
+    --joint-color: #3b82f6;
+    /* Deeper Blue for Joints/Shorts */
+}
+
+.human-model-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 300px;
+    z-index: 20;
+}
+
+/* Shadow Base */
+.human-model-container::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 10px;
+    width: 100px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+/* Volumetric Shapes */
+.human-body>div,
+.arm-group>div,
+.leg-group>div {
+    position: absolute;
+    /* Deep shading for plastic look */
+    background: radial-gradient(farthest-corner at 30% 30%, var(--skin-highlight) 0%, var(--skin-base) 40%, var(--skin-dark) 100%);
+    box-shadow:
+        inset 1px 1px 2px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+/* HEAD */
+.head {
+    top: 0;
+    left: 42px;
+    width: 36px;
+    height: 48px;
+    border-radius: 18px 18px 24px 24px;
+    z-index: 100;
+}
+
+.neck {
+    top: 45px;
+    left: 50px;
+    width: 20px;
+    height: 15px;
+    background: var(--skin-dark);
+    border-radius: 6px;
+    z-index: 90;
+}
+
+/* TORSO */
+.torso {
+    top: 55px;
+    left: 30px;
+    width: 60px;
+    height: 90px;
+    border-radius: 15px 15px 20px 20px;
+    z-index: 95;
+    background: radial-gradient(circle at 50% 30%, var(--skin-highlight) 0%, var(--skin-base) 50%, var(--skin-dark) 100%);
+}
+
+.pelvis {
+    top: 135px;
+    left: 32px;
+    width: 56px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--joint-color), #2563eb);
+    border-radius: 10px 10px 24px 24px;
+    z-index: 90;
+}
+
+/* ARMS */
+.arm-group {
+    position: absolute;
+    top: 60px;
+    /* Shoulder level */
+    width: 30px;
+    height: 150px;
+    transform-origin: 15px 10px;
+    /* Pivot at shoulder */
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.arm-left {
+    left: 0px;
+    z-index: 98;
+}
+
+.arm-right {
+    right: 0px;
+    z-index: 98;
+}
+
+.shoulder {
+    top: -5px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #60a5fa, #2563eb);
+}
+
+.upper-arm {
+    top: 15px;
+    left: 5px;
+    width: 20px;
+    height: 55px;
+    border-radius: 10px;
+}
+
+.elbow {
+    top: 65px;
+    left: 7px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--skin-dark);
+}
+
+.forearm {
+    top: 75px;
+    left: 6px;
+    width: 18px;
+    height: 55px;
+    border-radius: 8px;
+    transform-origin: top center;
+}
+
+.hand {
+    top: 125px;
+    left: 5px;
+    width: 20px;
+    height: 24px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--joint-color), #2563eb);
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.1);
+    /* Fingers */
+}
+
+/* LEGS (Static) */
+.leg-group {
+    position: absolute;
+    top: 165px;
+    width: 30px;
+    height: 140px;
+}
+
+.leg-left {
+    left: 25px;
+}
+
+.leg-right {
+    right: 25px;
+}
+
+.thigh {
+    top: 0;
+    left: 2px;
+    width: 26px;
+    height: 70px;
+    border-radius: 12px;
+}
+
+.knee {
+    top: 65px;
+    left: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--joint-color);
+}
+
+.calf {
+    top: 78px;
+    left: 4px;
+    width: 22px;
+    height: 60px;
+    border-radius: 10px;
+    /* Taper */
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+}
+
+.foot {
+    top: 125px;
+    left: 2px;
+    width: 28px;
+    height: 15px;
+    border-radius: 5px 5px 10px 10px;
+    background: linear-gradient(to bottom, var(--joint-color), #1d4ed8);
+}
+
+/* ===== REACH ANIMATIONS ===== */
+/* CSS Classes added by JS */
+.arm-reaching {
+    /* Arm raises up */
+    /* Handled by JS inline rotation for precision, or predefined classes */
+}
+
+/* Grabbing Effect */
+.hand.grabbing {
+    transform: scale(0.9);
+    filter: brightness(1.2);
+    transition: all 0.2s;
+}
+
+/* ===== TARGETS ===== */
+.target-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass logic handle it */
+}
+
+.target-obj {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #facc15 60%, #eab308);
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
+    animation: float 2s ease-in-out infinite alternate, spawnPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.target-obj.grabbed {
+    animation: grabSuccess 0.5s forwards;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes spawnPop {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes grabSuccess {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+        background: #a3e635;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* ===== CONTROLS & PROGRESS ===== */
+.sim-controls {
+    padding: 1rem 1.5rem;
+    background: #f8fafc;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.toggle-group {
+    background: #e2e8f0;
+    padding: 0.25rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    gap: 0.25rem;
+}
+
+.btn-toggle {
+    border: none;
+    background: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    transition: all 0.2s;
+}
+
+.btn-toggle.active {
+    background: var(--white);
+    color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+    font-weight: 600;
+}
+
+.control-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-control {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-medium);
+    cursor: pointer;
+    transition: var(--transition-bounce);
+}
+
+.btn-control:hover,
+.btn-control.active {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+/* Progress Panel */
+.progress-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--white);
+    border-top: 1px solid var(--border-color);
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-medium);
+    text-transform: uppercase;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.metric-value.big {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.rom-viz {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.rom-bar {
+    flex: 1;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.rom-fill {
+    height: 100%;
+    background: var(--accent-secondary);
+    transition: width 0.3s;
+}
+
+/* ===== BENEFITS SECTION ===== */
+.benefits-detail {
+    padding: var(--spacing-xl) 0;
+    background: var(--white);
+}
+
+.benefits-grid-detail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.benefit-card-detail {
+    background: var(--off-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: var(--transition-normal);
+}
+
+.benefit-card-detail:hover {
+    transform: translateY(-5px);
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+.detail-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sim-controls {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .progress-panel {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}

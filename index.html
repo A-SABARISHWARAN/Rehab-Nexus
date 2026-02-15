@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RehabVerse VR | Physiotherapy Reimagined</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo-icon">👁️</span>
+                <span class="logo-text">RehabVerse VR</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#demo" class="nav-link">Demo</a></li>
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="#therapist-view" class="nav-link">Therapist View</a></li>
+                <li><a href="#future" class="nav-link">Future</a></li>
+                <li><a href="#contact" class="btn btn-nav">Request Demo</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Physiotherapy that feels like play</div>
+                <h1 class="hero-title">Rehabilitation, Reimagined with Virtual Reality</h1>
+                <p class="hero-subtitle">RehabVerse VR transforms routine physiotherapy exercises into immersive,
+                    goal-based virtual experiences that motivate patients and deliver measurable recovery outcomes.</p>
+                <div class="hero-cta">
+                    <a href="#demo" class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i>
+                        Try Demo Experience
+                    </a>
+                    <a href="#how-it-works" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        View How It Works
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">+87%</div>
+                        <div class="stat-label">Patient Engagement</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">42%</div>
+                        <div class="stat-label">Faster Recovery</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">94%</div>
+                        <div class="stat-label">Therapist Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="vr-headset">
+                    <div class="vr-lens"></div>
+                    <div class="vr-lens"></div>
+                </div>
+                <div class="floating-elements">
+                    <div class="element element-1">🏥</div>
+                    <div class="element element-2">🎮</div>
+                    <div class="element element-3">📊</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="section problem-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Patients Struggle with Traditional Physiotherapy</h2>
+                <p class="section-subtitle">The real challenges that prevent effective recovery</p>
+            </div>
+            <div class="problem-cards">
+                <div class="card problem-card">
+                    <div class="card-icon problem-icon">
+                        <i class="fas fa-redo-alt"></i>
+                    </div>
+                    <h3 class="card-title">Monotony</h3>
+                    <p class="card-text">Repeating the same exercises daily drains motivation and makes patients want to
+                        quit therapy early.</p>
+                </div>
+                <div class="card problem-card">
+                    <div class="card-icon problem-icon">
+                        <i class="fas fa-battery-quarter"></i>
+                    </div>
+                    <h3 class="card-title">Low Engagement</h3>
+                    <p class="card-text">Patients disengage because traditional exercises feel like a chore, not a path
+                        to recovery.</p>
+                </div>
+                <div class="card problem-card">
+                    <div class="card-icon problem-icon">
+                        <i class="fas fa-comment-slash"></i>
+                    </div>
+                    <h3 class="card-title">No Instant Feedback</h3>
+                    <p class="card-text">Patients can't tell if they're doing exercises correctly, leading to improper
+                        form and slower progress.</p>
+                </div>
+                <div class="card problem-card">
+                    <div class="card-icon problem-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="card-title">Therapist Dependency</h3>
+                    <p class="card-text">Progress tracking is manual, subjective, and requires constant therapist
+                        supervision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Idea Section -->
+    <section id="idea" class="section idea-section">
+        <div class="container">
+            <div class="idea-content">
+                <div class="idea-text">
+                    <div class="section-header">
+                        <h2 class="section-title">What If Rehab Felt Like a Game?</h2>
+                        <p class="section-subtitle">Our vision for patient-centered recovery</p>
+                    </div>
+                    <p class="idea-description">
+                        RehabVerse VR places patients inside interactive virtual environments where physiotherapy
+                        exercises are converted into simple, engaging tasks. Patients focus on completing goals — not
+                        counting repetitions — while therapists receive accurate movement data in the background.
+                    </p>
+                    <div class="idea-features">
+                        <div class="feature">
+                            <i class="fas fa-gamepad feature-icon"></i>
+                            <div>
+                                <h4>Gamified Recovery</h4>
+                                <p>Transform exercises into rewarding challenges</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-chart-line feature-icon"></i>
+                            <div>
+                                <h4>Data-Driven Progress</h4>
+                                <p>Real-time tracking of every movement</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-home feature-icon"></i>
+                            <div>
+                                <h4>Clinic & Home Use</h4>
+                                <p>Seamless experience across settings</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="idea-visual">
+                    <div class="mockup-screen">
+                        <div class="screen-header">
+                            <div class="screen-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="vr-scene">
+                                <div class="floating-object object-1"></div>
+                                <div class="floating-object object-2"></div>
+                                <div class="floating-object object-3"></div>
+                                <div class="progress-ring">
+                                    <div class="ring-fill"></div>
+                                    <span class="ring-text">82%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Experiences -->
+    <section id="demo" class="section demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Demo Rehabilitation Experiences</h2>
+                <p class="section-subtitle">Interactive VR modules designed for specific recovery goals</p>
+            </div>
+            <div class="demo-cards">
+                <div class="card demo-card reach-grab">
+                    <div class="demo-header">
+                        <div class="demo-icon">🟦</div>
+                        <h3 class="demo-title">Reach & Grab</h3>
+                    </div>
+                    <p class="demo-description">Patients reach for virtual objects in 3D space, improving shoulder and
+                        elbow range of motion with real-time visual guidance.</p>
+                    <ul class="demo-features">
+                        <li><i class="fas fa-check"></i> Improves shoulder and elbow ROM</li>
+                        <li><i class="fas fa-check"></i> Real-time visual guidance</li>
+                        <li><i class="fas fa-check"></i> Adjustable difficulty levels</li>
+                        <li><i class="fas fa-check"></i> Progress tracking</li>
+                    </ul>
+                    <div class="demo-footer">
+                        <span class="demo-duration"><i class="far fa-clock"></i> 10-15 min session</span>
+                        <a href="reach-grab.html" class="btn-demo">View Demo</a>
+                    </div>
+                </div>
+                <div class="card demo-card balance-walk">
+                    <div class="demo-header">
+                        <div class="demo-icon">🟩</div>
+                        <h3 class="demo-title">Balance Walk</h3>
+                    </div>
+                    <p class="demo-description">Patients walk on virtual paths with varying surfaces, training balance
+                        and postural control in a safe, immersive environment.</p>
+                    <ul class="demo-features">
+                        <li><i class="fas fa-check"></i> Trains balance and postural control</li>
+                        <li><i class="fas fa-check"></i> Adjustable difficulty levels</li>
+                        <li><i class="fas fa-check"></i> Fall prevention focus</li>
+                        <li><i class="fas fa-check"></i> Real-time stability feedback</li>
+                    </ul>
+                    <div class="demo-footer">
+                        <span class="demo-duration"><i class="far fa-clock"></i> 8-12 min session</span>
+                        <a href="balance-walk.html" class="btn-demo">View Demo</a>
+                    </div>
+                </div>
+                <div class="card demo-card reaction-tap">
+                    <div class="demo-header">
+                        <div class="demo-icon">🟨</div>
+                        <h3 class="demo-title">Reaction Tap</h3>
+                    </div>
+                    <p class="demo-description">Patients respond to visual cues with precise movements, improving
+                        coordination, reaction time, and cognitive-motor integration.</p>
+                    <ul class="demo-features">
+                        <li><i class="fas fa-check"></i> Improves coordination and reaction time</li>
+                        <li><i class="fas fa-check"></i> Game-like scoring system</li>
+                        <li><i class="fas fa-check"></i> Cognitive-motor training</li>
+                        <li><i class="fas fa-check"></i> Progressively challenging</li>
+                    </ul>
+                    <div class="demo-footer">
+                        <span class="demo-duration"><i class="far fa-clock"></i> 5-10 min session</span>
+                        <a href="reaction-tap.html" class="btn-demo">View Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section workflow-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How the Demo System Works</h2>
+                <p class="section-subtitle">Simple, intuitive workflow for maximum therapeutic impact</p>
+            </div>
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="step-title">Patient wears VR headset</h3>
+                    <p class="step-text">Comfortable setup with guided calibration</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="step-title">Selects rehab activity</h3>
+                    <p class="step-text">Choose from tailored recovery modules</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3 class="step-title">Performs guided movements</h3>
+                    <p class="step-text">Follow intuitive visual instructions</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h3 class="step-title">System tracks motion live</h3>
+                    <p class="step-text">Precise millimeter-level accuracy</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="step-title">Feedback shown instantly</h3>
+                    <p class="step-text">Real-time performance visualization</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="step-title">Performance stored for review</h3>
+                    <p class="step-text">Comprehensive progress tracking</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Feedback -->
+    <section class="section feedback-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Instant Feedback Makes the Difference</h2>
+                <p class="section-subtitle">Real-time performance tracking keeps patients engaged and informed</p>
+            </div>
+            <div class="feedback-demo">
+                <div class="feedback-ui">
+                    <div class="ui-header">
+                        <div class="ui-title">Live Performance Dashboard</div>
+                        <div class="ui-status">Active Session</div>
+                    </div>
+                    <div class="ui-metrics">
+                        <div class="metric-display">
+                            <div class="metric-label">Movement Accuracy</div>
+                            <div class="metric-value">94%</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 94%"></div>
+                            </div>
+                        </div>
+                        <div class="metric-display">
+                            <div class="metric-label">Range of Motion</div>
+                            <div class="metric-value">78°</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="metric-display">
+                            <div class="metric-label">Task Completion</div>
+                            <div class="metric-value">2:18</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="metric-display">
+                            <div class="metric-label">Session Score</div>
+                            <div class="metric-value">A+</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-feedback">
+                        <div class="feedback-message">
+                            <i class="fas fa-check-circle"></i>
+                            Great form! Keep it up.
+                        </div>
+                    </div>
+                </div>
+                <div class="feedback-explanation">
+                    <h3>Why Live Feedback Matters</h3>
+                    <p>Patients stay motivated when they can see immediate results. Our system provides:</p>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-bullseye"></i> <strong>Movement accuracy indicator</strong> - Visual
+                            guidance for perfect form</li>
+                        <li><i class="fas fa-expand-alt"></i> <strong>Range of motion meter</strong> - Track flexibility
+                            improvements</li>
+                        <li><i class="fas fa-stopwatch"></i> <strong>Task completion timer</strong> - Measure speed and
+                            efficiency</li>
+                        <li><i class="fas fa-star"></i> <strong>Session score summary</strong> - Gamified achievement
+                            system</li>
+                    </ul>
+                    <p>This real-time feedback loop transforms therapy from a chore into an engaging challenge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Therapist View -->
+    <section id="therapist-view" class="section therapist-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Designed for Therapists Too</h2>
+                <p class="section-subtitle">Powerful analytics and control in an intuitive interface</p>
+            </div>
+            <div class="therapist-demo">
+                <div class="therapist-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3>Session History Overview</h3>
+                        <p>Complete timeline of patient progress with filterable session data and compliance tracking.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>ROM Progress Visualization</h3>
+                        <p>Interactive charts showing range of motion improvements over time with milestone tracking.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Performance Comparison</h3>
+                        <p>Compare current performance against previous sessions or recovery benchmarks.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Exercise Difficulty Control</h3>
+                        <p>Remotely adjust exercise parameters based on patient progress and capability.</p>
+                    </div>
+                </div>
+                <div class="therapist-ui-preview">
+                    <div class="ui-preview">
+                        <div class="ui-tabs">
+                            <div class="ui-tab active">Patient Progress</div>
+                            <div class="ui-tab">Session Analytics</div>
+                            <div class="ui-tab">Exercise Settings</div>
+                        </div>
+                        <div class="ui-content">
+                            <div class="chart-placeholder">
+                                <div class="chart-line"></div>
+                                <div class="chart-line"></div>
+                                <div class="chart-line"></div>
+                            </div>
+                            <div class="ui-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Sessions Completed</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">87%</div>
+                                    <div class="stat-label">Average Accuracy</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">+24%</div>
+                                    <div class="stat-label">ROM Improvement</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Works -->
+    <section class="section benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why RehabVerse VR Works</h2>
+                <p class="section-subtitle">Transforming rehabilitation through engagement and data</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">01</div>
+                    <h3 class="benefit-title">Encourages Longer Therapy Sessions</h3>
+                    <p class="benefit-text">Patients engage 2.3x longer in gamified VR environments compared to
+                        traditional exercises.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">02</div>
+                    <h3 class="benefit-title">Improves Patient Confidence</h3>
+                    <p class="benefit-text">Visual progress tracking and achievable goals build patient self-efficacy
+                        and motivation.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">03</div>
+                    <h3 class="benefit-title">Makes Rehab Measurable</h3>
+                    <p class="benefit-text">Every movement generates precise data, enabling objective progress
+                        assessment.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">04</div>
+                    <h3 class="benefit-title">Supports Clinic & Home Use</h3>
+                    <p class="benefit-text">Seamless transition between supervised clinic sessions and independent home
+                        practice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Vision -->
+    <section id="future" class="section future-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Where This Is Headed</h2>
+                <p class="section-subtitle">Our roadmap for transforming rehabilitation globally</p>
+            </div>
+            <div class="future-cards">
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Driven Personalization</h3>
+                    <p>Machine learning algorithms that adapt exercises in real-time based on patient performance and
+                        recovery patterns.</p>
+                    <div class="future-timeline">Q3 2024</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-home-heart"></i>
+                    </div>
+                    <h3>Home-Based Telerehabilitation</h3>
+                    <p>Complete remote therapy solutions with virtual therapist oversight and automated progress
+                        monitoring.</p>
+                    <div class="future-timeline">Q4 2024</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Low-Cost VR for Indian Clinics</h3>
+                    <p>Affordable hardware bundles and subscription models designed specifically for the Indian
+                        healthcare market.</p>
+                    <div class="future-timeline">Q1 2025</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Physiotherapy Education</h3>
+                    <p>Training modules and simulation environments for physiotherapy students and continuing education.
+                    </p>
+                    <div class="future-timeline">Q2 2025</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Experience the Future of Rehabilitation</h2>
+                <p class="cta-subtitle">Join leading clinics and hospitals already transforming patient recovery with
+                    RehabVerse VR.</p>
+                <form class="cta-form" id="demoForm">
+                    <div class="form-group">
+                        <input type="text" name="fullName" placeholder="Full Name" required>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <input type="text" name="clinicName" placeholder="Clinic/Hospital Name" required>
+                    </div>
+                    <button type="submit" class="btn btn-cta">
+                        <i class="fas fa-vr-cardboard"></i>
+                        Request Full Prototype Demo
+                    </button>
+                </form>
+                <p class="cta-note">Schedule a 30-minute personalized demo with our team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">👁️</span>
+                        <span class="logo-text">RehabVerse VR</span>
+                    </div>
+                    <p class="footer-tagline">Physiotherapy that feels like play, powered by Virtual Reality.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="#demo">Demo Experiences</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#therapist-view">Therapist Tools</a>
+                        <a href="#future">Roadmap</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Research</a>
+                        <a href="#">Partners</a>
+                        <a href="#">Careers</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">Case Studies</a>
+                        <a href="#">Research Papers</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 RehabVerse VR. All rights reserved. This is a demonstration website for a
+                    conceptual product.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

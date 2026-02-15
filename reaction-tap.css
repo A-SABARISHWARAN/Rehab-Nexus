@@ -1,0 +1,477 @@
+/* Reaction Tap Specific Styles */
+
+/* Reuse base styles from Reach & Grab where possible, customized for "Game" feel */
+
+.simulation-overview {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+    background: var(--gradient-hero);
+    min-height: 80vh;
+}
+
+.simulation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.page-subtitle {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+.badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.badge {
+    background: rgba(234, 179, 8, 0.1);
+    color: #eab308;
+    /* Yellow/Gold for Reaction */
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* GAME HUD */
+.game-hud {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.hud-item {
+    background: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.score-box {
+    border-color: var(--primary-color);
+}
+
+.hud-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-medium);
+    letter-spacing: 1px;
+}
+
+.hud-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+/* VIEWPORT */
+.viewport-container {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.simulation-viewport {
+    height: 500px;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+/* Background */
+.rehab-grid {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -50%;
+    background-image:
+        radial-gradient(circle, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    transform: perspective(500px) rotateX(45deg);
+    opacity: 0.5;
+}
+
+/* ===== 3D AVATAR (Same Blue Style) ===== */
+/* ... Using simplified version of reach-grab.css rules ... */
+:root {
+    --skin-base: #93c5fd;
+    --skin-dark: #60a5fa;
+    --skin-highlight: #bfdbfe;
+    --joint-color: #3b82f6;
+}
+
+.human-model-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 300px;
+    z-index: 10;
+    opacity: 0.9;
+    /* Slightly faded as it's the "player" */
+}
+
+/* Volumetric Styles */
+.human-body>div,
+.arm-group>div,
+.leg-group>div {
+    position: absolute;
+    background: radial-gradient(farthest-corner at 30% 30%, var(--skin-highlight) 0%, var(--skin-base) 40%, var(--skin-dark) 100%);
+    box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.4), inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+/* Body Parts Layout (Simplified from Reach & Grab) */
+.head {
+    top: 0;
+    left: 42px;
+    width: 36px;
+    height: 48px;
+    border-radius: 18px 18px 24px 24px;
+    z-index: 100;
+}
+
+.torso {
+    top: 55px;
+    left: 30px;
+    width: 60px;
+    height: 90px;
+    border-radius: 15px;
+    z-index: 95;
+}
+
+.arm-group {
+    position: absolute;
+    top: 60px;
+    width: 30px;
+    height: 150px;
+    transform-origin: 15px 10px;
+    transition: transform 0.1s;
+}
+
+.arm-left {
+    left: -5px;
+}
+
+.arm-right {
+    right: -5px;
+}
+
+.shoulder {
+    top: -5px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #60a5fa, #2563eb);
+}
+
+.upper-arm {
+    top: 15px;
+    left: 5px;
+    width: 20px;
+    height: 55px;
+    border-radius: 10px;
+}
+
+.elbow {
+    top: 65px;
+    left: 7px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--skin-dark);
+}
+
+.forearm {
+    top: 75px;
+    left: 6px;
+    width: 18px;
+    height: 55px;
+    border-radius: 8px;
+}
+
+.hand {
+    top: 125px;
+    left: 5px;
+    width: 20px;
+    height: 24px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--joint-color), #2563eb);
+}
+
+.leg-group {
+    position: absolute;
+    top: 165px;
+    width: 30px;
+    height: 140px;
+}
+
+.leg-left {
+    left: 25px;
+}
+
+.leg-right {
+    right: 25px;
+}
+
+.thigh {
+    top: 0;
+    left: 2px;
+    width: 26px;
+    height: 70px;
+    border-radius: 12px;
+}
+
+.knee {
+    top: 65px;
+    left: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--joint-color);
+}
+
+.calf {
+    top: 78px;
+    left: 4px;
+    width: 22px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.foot {
+    top: 125px;
+    left: 2px;
+    width: 28px;
+    height: 15px;
+    border-radius: 5px 5px 10px 10px;
+    background: linear-gradient(to bottom, var(--joint-color), #1d4ed8);
+}
+
+/* ===== GAME TARGETS ===== */
+.tap-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+.tap-target {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fcd34d 0%, #d97706 100%);
+    border: 3px solid #fff;
+    box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
+    cursor: pointer;
+    transform: scale(0);
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tap-target::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.tap-target.hit {
+    animation: hitEffect 0.2s forwards;
+}
+
+@keyframes popIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes hitEffect {
+    0% {
+        transform: scale(1);
+        background: #84cc16;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* OVERLAY */
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.game-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay-content {
+    text-align: center;
+    color: white;
+}
+
+.overlay-content h2 {
+    margin: 1rem 0 0.5rem;
+    font-size: 2rem;
+}
+
+.overlay-content p {
+    color: #94a3b8;
+    margin-bottom: 2rem;
+}
+
+/* CONTROLS & PERF */
+.sim-controls {
+    padding: 1rem 1.5rem;
+    background: #f8fafc;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-msg {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.control-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.performance-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--white);
+    border-top: 1px solid var(--border-color);
+}
+
+.perf-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.perf-label {
+    font-size: 0.75rem;
+    color: var(--text-medium);
+    text-transform: uppercase;
+}
+
+.perf-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.perf-value.grade {
+    color: var(--accent-secondary);
+    font-size: 1.5rem;
+}
+
+.focus-bar {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+}
+
+.focus-fill {
+    height: 100%;
+    background: #8b5cf6;
+    transition: width 0.3s;
+}
+
+/* Benefits */
+.benefits-detail {
+    padding: var(--spacing-xl) 0;
+    background: var(--white);
+}
+
+.benefits-grid-detail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.benefit-card-detail {
+    background: var(--off-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: var(--transition-normal);
+}
+
+.benefit-card-detail:hover {
+    transform: translateY(-5px);
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+.detail-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .performance-panel {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .game-hud {
+        gap: 1rem;
+    }
+}

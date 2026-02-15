@@ -1,0 +1,770 @@
+/* Balance Walk Specific Styles */
+
+/* ===== LAYOUT & OVERVIEW ===== */
+.simulation-overview {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+    background: var(--gradient-hero);
+    min-height: 80vh;
+}
+
+.simulation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.page-subtitle {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+}
+
+/* ===== STATUS PANEL ===== */
+.status-panel {
+    background: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-secondary);
+    animation: pulse 2s infinite;
+}
+
+.status-text {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    min-width: 180px;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== VIEWPORT CONTAINER ===== */
+.viewport-container {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.simulation-viewport {
+    height: 500px;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%);
+    /* Light blue sky background matching Ref */
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+/* Background Elements */
+.rehab-grid {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background-image: linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-100px);
+    animation: gridScroll 10s linear infinite;
+}
+
+.track-lines {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(0, 0, 0, 0.03) 100px, rgba(0, 0, 0, 0.03) 200px);
+    transform: skewX(-45deg);
+    transform-origin: bottom;
+    animation: trackScroll 4s linear infinite;
+}
+
+/* Shadows */
+.human-model-container::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    /* Ground level */
+    left: 5px;
+    width: 80px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    filter: blur(5px);
+    transform: scaleX(1);
+    animation: shadowPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes shadowPulse {
+    from {
+        transform: scaleX(1);
+        opacity: 0.2;
+    }
+
+    to {
+        transform: scaleX(1.1);
+        opacity: 0.15;
+    }
+}
+
+@keyframes gridScroll {
+    0% {
+        transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-100px) translateY(0);
+    }
+
+    100% {
+        transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-100px) translateY(40px);
+    }
+}
+
+@keyframes trackScroll {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -200px 0;
+    }
+}
+
+/* ===== 3D BLUE HUMAN MODEL ===== */
+:root {
+    --skin-base: #93c5fd;
+    /* Light Blue */
+    --skin-dark: #60a5fa;
+    /* Medium Blue Shadow */
+    --skin-highlight: #bfdbfe;
+    /* Very Light Blue Highlight */
+    --joint-color: #3b82f6;
+    /* Deeper Blue for Joints/Shorts */
+}
+
+.human-model-container {
+    position: absolute;
+    bottom: 15%;
+    left: 20%;
+    width: 100px;
+    height: 280px;
+    z-index: 20;
+}
+
+/* Common Shape Styles for "Volumetric" Look */
+/* Common Shape Styles for "Volumetric" Look */
+.human-body>div,
+.arm-group>div,
+.leg-group>div {
+    position: absolute;
+    /* Deep shading for plastic look */
+    background: radial-gradient(farthest-corner at 30% 30%, var(--skin-highlight) 0%, var(--skin-base) 40%, var(--skin-dark) 100%);
+    /* Sharp highlight inset */
+    box-shadow:
+        inset 1px 1px 2px rgba(255, 255, 255, 0.4),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+    /* Remove outline for smoother look */
+    border: none;
+}
+
+/* HEAD */
+.head {
+    top: 0;
+    left: 32px;
+    width: 36px;
+    height: 48px;
+    border-radius: 18px 18px 24px 24px;
+    z-index: 100;
+    animation: headBob 1s ease-in-out infinite alternate;
+}
+
+/* Ears (pseudo) */
+.head::before,
+.head::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    width: 6px;
+    height: 10px;
+    background: var(--skin-dark);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.head::before {
+    left: -2px;
+}
+
+.head::after {
+    right: -2px;
+}
+
+/* NECK */
+.neck {
+    top: 42px;
+    left: 42px;
+    width: 16px;
+    height: 12px;
+    background: var(--skin-dark);
+    border-radius: 4px;
+    z-index: 90;
+}
+
+/* TORSO */
+.torso {
+    top: 50px;
+    left: 20px;
+    width: 60px;
+    height: 80px;
+    /* Shorter, connects to pelvis */
+    border-radius: 15px 15px 10px 10px;
+    /* Pectoral shading */
+    background: radial-gradient(circle at 50% 30%, var(--skin-highlight) 0%, var(--skin-base) 50%, var(--skin-dark) 100%);
+    z-index: 95;
+    animation: torsoTwist 2s ease-in-out infinite alternate;
+}
+
+/* PELVIS (Shorts area) */
+.pelvis {
+    top: 125px;
+    left: 22px;
+    width: 56px;
+    height: 35px;
+    background: linear-gradient(135deg, var(--joint-color), #2563eb);
+    /* Darker blue shorts */
+    border-radius: 10px 10px 20px 20px;
+    z-index: 90;
+}
+
+/* ARMS */
+.arm-group {
+    position: absolute;
+    top: 55px;
+    /* Shoulder height */
+    width: 20px;
+    height: 150px;
+    transform-origin: 10px 10px;
+    /* Shoulder pivot */
+}
+
+.arm-left {
+    left: 20px;
+    z-index: 80;
+    /* Behind torso */
+    filter: brightness(0.9);
+    animation: armSwing 2s linear infinite reverse;
+}
+
+.arm-right {
+    left: 60px;
+    /* Far side of torso */
+    z-index: 110;
+    /* Front */
+    animation: armSwing 2s linear infinite;
+}
+
+.shoulder {
+    top: -5px;
+    left: -5px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #60a5fa, #2563eb);
+    /* Darker shoulder pad look */
+    z-index: 2;
+}
+
+.upper-arm {
+    top: 15px;
+    left: 2px;
+    width: 16px;
+    height: 50px;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.elbow {
+    top: 60px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--skin-dark);
+    z-index: 1;
+}
+
+.forearm {
+    top: 70px;
+    left: 2px;
+    width: 14px;
+    height: 50px;
+    border-radius: 6px;
+    transform-origin: top center;
+    transform: rotate(5deg);
+    /* Natural bend */
+}
+
+/* Hands with fingers hint */
+.hand {
+    top: 115px;
+    left: 1px;
+    width: 16px;
+    height: 20px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--joint-color), #2563eb);
+    /* Indent for fingers */
+    box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* LEGS */
+.leg-group {
+    position: absolute;
+    top: 150px;
+    /* Hip joint */
+    width: 24px;
+    height: 150px;
+    transform-origin: 12px 10px;
+    /* Hip pivot */
+}
+
+.leg-left {
+    left: 26px;
+    z-index: 85;
+    /* Behind pelvis slightly */
+    filter: brightness(0.85);
+    /* Proper depth perception */
+    animation: legWalk 2s linear infinite reverse;
+}
+
+.leg-right {
+    left: 50px;
+    z-index: 92;
+    /* In front of pelvis slightly */
+    animation: legWalk 2s linear infinite;
+}
+
+.thigh {
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 65px;
+    border-radius: 12px;
+    /* Thigh muscle bulge: Stronger radial highlight */
+    background: radial-gradient(circle at 60% 40%, #e0f2fe, var(--skin-base) 50%, var(--skin-dark));
+}
+
+.knee {
+    top: 60px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--joint-color);
+    /* Knee cap */
+    z-index: 2;
+}
+
+.calf {
+    top: 70px;
+    left: 2px;
+    width: 20px;
+    height: 65px;
+    border-radius: 10px;
+    /* Calf muscle taper */
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    background: radial-gradient(circle at 40% 30%, var(--skin-highlight), var(--skin-base));
+}
+
+.foot {
+    top: 130px;
+    left: 0;
+    width: 26px;
+    height: 14px;
+    border-radius: 5px 15px 5px 5px;
+    /* Shoe shape */
+    background: linear-gradient(to right, var(--joint-color), #1d4ed8);
+    transform-origin: 5px 5px;
+    transform: rotate(0deg);
+    /* Flat foot default */
+}
+
+/* ANIMATIONS */
+
+@keyframes headBob {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(2px);
+    }
+}
+
+@keyframes torsoTwist {
+
+    /* Subtle rotation of torso opposing legs */
+    from {
+        transform: rotateY(5deg);
+    }
+
+    to {
+        transform: rotateY(-5deg);
+    }
+}
+
+@keyframes armSwing {
+    0% {
+        transform: rotate(15deg);
+    }
+
+    50% {
+        transform: rotate(-15deg);
+    }
+
+    100% {
+        transform: rotate(15deg);
+    }
+}
+
+@keyframes legWalk {
+    0% {
+        transform: rotate(-25deg);
+    }
+
+    25% {
+        transform: rotate(0deg) translateY(-5px);
+    }
+
+    /* Lift phase */
+    50% {
+        transform: rotate(25deg);
+    }
+
+    75% {
+        transform: rotate(0deg) translateY(-2px);
+    }
+
+    /* Plant phase */
+    100% {
+        transform: rotate(-25deg);
+    }
+}
+
+/* KICK SEQUENCE */
+.human-model-container.freezing * {
+    animation-play-state: paused !important;
+    transition: all 0.2s;
+}
+
+/* Kick Overrides */
+.human-model-container.kicking .leg-right {
+    animation: kickAction 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+}
+
+.human-model-container.kicking .leg-right .calf {
+    /* Knee snap */
+    animation: kneeSnap 1.2s ease-out forwards;
+}
+
+@keyframes kickAction {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    30% {
+        transform: rotate(-45deg);
+    }
+
+    /* Wind Up */
+    50% {
+        transform: rotate(60deg);
+    }
+
+    /* Kick */
+    70% {
+        transform: rotate(60deg);
+    }
+
+    /* Hold */
+    100% {
+        transform: rotate(0deg);
+    }
+
+    /* Return */
+}
+
+@keyframes kneeSnap {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    30% {
+        transform: rotate(30deg);
+        transform-origin: top center;
+    }
+
+    /* Curl back */
+    50% {
+        transform: rotate(0deg);
+    }
+
+    /* Snap straight */
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* FOOTBALL */
+/* 3D Football */
+.football {
+    position: absolute;
+    bottom: 55px;
+    /* Aligned with ground plane */
+    /* Pulling ball closer: 70px -> 50px offset */
+    left: calc(20% + 50px);
+
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle at 30% 30%, #ffffff 0%, #e2e8f0 80%, #94a3b8 100%);
+    border: none;
+    border-radius: 50%;
+    box-shadow: -2px 5px 5px rgba(0, 0, 0, 0.3);
+    /* Hexagon pattern */
+    background-image:
+        radial-gradient(circle at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.8) 42%, rgba(0, 0, 0, 0.8) 50%, transparent 52%),
+        radial-gradient(circle at 30% 30%, #fff, #cbd5e1);
+    z-index: 20;
+    transition: transform 0.1s;
+}
+
+.football::before {
+    /* Detail spots */
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    width: 8px;
+    height: 8px;
+    background: #1e293b;
+    border-radius: 50%;
+    transform: skew(10deg);
+}
+
+.football::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 6px;
+    height: 6px;
+    background: #1e293b;
+    border-radius: 40%;
+}
+
+.football.kicked {
+    animation: ballFly 1s ease-out forwards;
+}
+
+@keyframes ballFly {
+    0% {
+        left: calc(20% + 50px);
+        /* Match start pos */
+        bottom: 55px;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        left: calc(20% + 600px);
+        bottom: 30px;
+        transform: rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== CONTROLS ===== */
+.sim-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 50;
+}
+
+.btn-control {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-control:hover,
+.btn-control.active {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ===== INSIGHTS PANEL ===== */
+.insights-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    width: 250px;
+    transform: translateX(120%);
+    /* Hidden by default */
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.insights-panel.visible {
+    transform: translateX(0);
+}
+
+.insight-item {
+    margin-bottom: 0.75rem;
+}
+
+.insight-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-medium);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.insight-value {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.progress-bar {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent-secondary);
+    transition: width 0.5s ease;
+}
+
+/* ===== BENEFITS SECTION ===== */
+.benefits-detail {
+    padding: var(--spacing-xl) 0;
+    background: var(--white);
+}
+
+.benefits-grid-detail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.benefit-card-detail {
+    background: var(--off-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: var(--transition-normal);
+    opacity: 0;
+    animation: fadeUp 0.6s ease-out forwards;
+}
+
+.benefit-card-detail:hover {
+    transform: translateY(-5px);
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+.detail-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .human-model-container {
+        transform: scale(0.6);
+        left: 10%;
+        bottom: 10%;
+    }
+
+    .sim-controls {
+        flex-direction: column;
+        top: 20px;
+        right: 10px;
+        bottom: auto;
+    }
+
+    .insights-panel {
+        top: auto;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+    }
+}

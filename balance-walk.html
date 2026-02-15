@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Walk Simulation | RehabVerse VR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Inherit main styles -->
+    <link rel="stylesheet" href="balance-walk.css"> <!-- Specific page styles -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>">
+</head>
+
+<body>
+    <!-- Navbar (Simplified) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <span class="logo-icon">👁️</span>
+                <span class="logo-text">RehabVerse VR</span>
+            </a>
+            <div class="nav-controls">
+                <a href="index.html#demo" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Back to Demos
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Simulation Section -->
+    <section class="simulation-overview">
+        <div class="container">
+            <div class="simulation-header">
+                <div>
+                    <h1 class="page-title">Balance Walk Training</h1>
+                    <p class="page-subtitle">Visual demonstration of postural stability and gait coordination therapy.
+                    </p>
+                </div>
+                <div class="status-panel">
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        <span class="status-text" id="statusText">System Ready</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Simulation Viewport -->
+            <div class="viewport-container">
+                <div class="simulation-viewport" id="simViewport">
+                    <!-- Background Elements -->
+                    <div class="rehab-grid"></div>
+                    <div class="track-lines"></div>
+
+                    <!-- 2D > 3D Human Model -->
+                    <div class="human-model-container" id="humanModel">
+                        <div class="human-body">
+                            <!-- Core -->
+                            <div class="head"></div>
+                            <div class="neck"></div>
+                            <div class="torso"></div>
+                            <div class="pelvis"></div>
+
+                            <!-- Left Arm (Behind) -->
+                            <div class="arm-group arm-left">
+                                <div class="shoulder"></div>
+                                <div class="upper-arm"></div>
+                                <div class="elbow"></div>
+                                <div class="forearm"></div>
+                                <div class="hand"></div>
+                            </div>
+
+                            <!-- Left Leg (Behind) -->
+                            <div class="leg-group leg-left">
+                                <div class="thigh"></div>
+                                <div class="knee"></div>
+                                <div class="calf"></div>
+                                <div class="foot"></div>
+                            </div>
+
+                            <!-- Right Leg (Front) -->
+                            <div class="leg-group leg-right">
+                                <div class="thigh"></div>
+                                <div class="knee"></div>
+                                <div class="calf"></div>
+                                <div class="foot"></div>
+                            </div>
+
+                            <!-- Right Arm (Front) -->
+                            <div class="arm-group arm-right">
+                                <div class="shoulder"></div>
+                                <div class="upper-arm"></div>
+                                <div class="elbow"></div>
+                                <div class="forearm"></div>
+                                <div class="hand"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Football Element -->
+                    <div class="football" id="football"></div>
+
+                    <!-- Floating UI Feedback -->
+                    <div class="feedback-tooltip" id="feedbackTooltip">Stabilizing...</div>
+                </div>
+
+                <!-- Simulation Controls -->
+                <div class="sim-controls">
+                    <button class="btn-control" id="btnRestart" title="Restart Simulation">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button class="btn-control" id="btnSlowMo" title="Toggle Slow Motion">
+                        <i class="fas fa-tachometer-alt-slow"></i> 🐢
+                    </button>
+                    <button class="btn-control active" id="btnInsights" title="Toggle Insights">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                </div>
+
+                <!-- Live Insights Panel -->
+                <div class="insights-panel" id="insightsPanel">
+                    <div class="insight-item">
+                        <span class="insight-label">Stability</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <span class="insight-label">Gait Speed</span>
+                        <span class="insight-value">0.8 m/s</span>
+                    </div>
+                    <div class="insight-item">
+                        <span class="insight-label">Cadence</span>
+                        <span class="insight-value">98 steps/min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-detail">
+        <div class="container">
+            <h2 class="section-title">Therapeutic Benefits</h2>
+            <div class="benefits-grid-detail">
+                <div class="benefit-card-detail" style="animation-delay: 0.1s">
+                    <div class="detail-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Postural Stability</h3>
+                    <p>Enhances body ability to maintain equilibrium under dynamic motion, reducing sway.</p>
+                </div>
+                <div class="benefit-card-detail" style="animation-delay: 0.2s">
+                    <div class="detail-icon"><i class="fas fa-walking"></i></div>
+                    <h3>Gait Coordination</h3>
+                    <p>Synchronizes multi-joint movements for smoother, more efficient walking patterns.</p>
+                </div>
+                <div class="benefit-card-detail" style="animation-delay: 0.3s">
+                    <div class="detail-icon"><i class="fas fa-dumbbell"></i></div>
+                    <h3>Lower-limb Strength</h3>
+                    <p>Targets quadriceps and calves during kick phase to build functional muscle power.</p>
+                </div>
+                <div class="benefit-card-detail" style="animation-delay: 0.4s">
+                    <div class="detail-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Neuromuscular Control</h3>
+                    <p>Retrains neural pathways to improve reaction times and movement precision.</p>
+                </div>
+                <div class="benefit-card-detail" style="animation-delay: 0.5s">
+                    <div class="detail-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3>Fall Risk Reduction</h3>
+                    <p>Directly addresses primary risk factors for falls in elderly and post-op patients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <p>&copy; 2026 RehabVerse VR. Clinical Simulation Demo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="balance-walk.js"></script>
+</body>
+
+</html>
