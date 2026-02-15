@@ -42,10 +42,6 @@ The goal of Rehab Nexus is to provide an accessible and engaging digital rehabil
 
 📌 How to Run Locally
 
-Clone the repository
-
-git clone https://github.com/your-username/rehab-nexus.git
-
 Open the project folder
 
 Run index.html in your browser
